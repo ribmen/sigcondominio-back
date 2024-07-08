@@ -19,8 +19,7 @@ import java.util.Optional;
 
 @AllArgsConstructor
 @RestController
-@RequestMapping("/visitante")
-@CrossOrigin(origins = "http://localhost:8081") // ou use "*" para permitir todas as origens
+@RequestMapping("/visitantes")
 public class VisitanteController {
 
     @Autowired
@@ -42,7 +41,7 @@ public class VisitanteController {
         return ResponseEntity.notFound().build();
     }
 
-    @GetMapping("/buscaPorCpf/{visitanteCpf}")
+    @GetMapping("/cpf/{visitanteCpf}")
     public ResponseEntity<Visitante> buscarCpf(@PathVariable String visitanteCpf) {
         Optional<Visitante> visitanteOptional = visitanteRepository.findByCpf(visitanteCpf);
         if(visitanteOptional.isPresent()) {
@@ -69,7 +68,6 @@ public class VisitanteController {
         return ResponseEntity.ok(visitante);
     }
 
-    @CrossOrigin(origins = "http://localhost:8081")
     @DeleteMapping("/{visitanteCpf}")
     public ResponseEntity<Visitante> excluir(@PathVariable String visitanteCpf) {
         if (!visitanteRepository.existsByCpf(visitanteCpf)) {

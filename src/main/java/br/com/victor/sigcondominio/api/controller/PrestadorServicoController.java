@@ -13,7 +13,6 @@ import java.util.Optional;
 @AllArgsConstructor
 @RestController
 @RequestMapping("/prestadorServicos")
-@CrossOrigin(origins = "http://localhost:8081") // ou use "*" para permitir todas as origens
 public class PrestadorServicoController {
 
     @Autowired
